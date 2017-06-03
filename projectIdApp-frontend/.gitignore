@@ -1,6 +1,6 @@
 /node_modules
 /dist
 /.tmp
-/.sass-cache
-/bower_components
+/.sass-cacheapp
+/app/bower_components
 *.iml
