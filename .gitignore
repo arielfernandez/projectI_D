@@ -27,6 +27,7 @@ hs_err_pid*
 /.tmp
 /.sass-cache
 /bower_components
+/app/bower_components
 
 #Backend
 /target
