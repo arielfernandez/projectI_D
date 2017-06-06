@@ -5,26 +5,45 @@
 'use strict';
 
 angular.module('projectIdAppApp')
-  .controller('EditUserDialogCtrl', function ($scope, $mdDialog,  $rootScope, dialogData) {
+  .controller('EditUserDialogCtrl', function ($scope, $mdDialog,  $rootScope, dialogData, $http) {
 
     $scope.usersData = {};
 
-    $scope.usersData.data = {
-      "Nombre": 'Leonardo',
-      "Apellido": 'DiCaprio',
-      "Direccion": 'Lincoln Road 1000',
-      "Pais": 'USA',
-      "Telefono": 1010101001,
-      "Celular": 11010010101,
-      "Email": 'leodicaprio@gmail.com'
+    $scope.labels = {
+      'name': 'Nombre',
+      'surname': 'Apellido',
+      'address': 'Dirección',
+      'country': 'País',
+      'phone': 'Teléfono',
+      'mobile':'Celular',
+      'email': 'Email'
     };
+
+    $scope.getUserData = function (userId) {
+      $http.get('http://localhost:8080/getUser/' + userId).then(function (response) {
+        for(var key in response.data){
+          if(key != 'id')
+            $scope.usersData[$scope.labels[key]] = response.data[key];
+          else
+            $scope.userId = response.data[key];
+        }
+      });
+    }
 
     $scope.cancel = function () {
       $mdDialog.cancel();
     }
 
+    $scope.updateUser = function () {
+
+      $scope.usersData.id = $scope.userId;
+      $scope.cancel();
+
+    }
+
     if(dialogData.id){
       console.log(dialogData.id);
+      $scope.getUserData(dialogData.id);
     }
 
   });

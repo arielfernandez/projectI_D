@@ -4,11 +4,19 @@
 'use strict';
 
 angular.module('projectIdAppApp')
-  .controller('AllUsersCtrl', function ($mdDialog, appDataFactory) {
+  .controller('AllUsersCtrl', function ($mdDialog, appDataFactory, $http) {
 
     var vm = this;
 
-    vm.usersData = appDataFactory.usersData;
+    //vm.usersData = appDataFactory.usersData;
+
+    vm.getAllUser = function(){
+
+      $http.get('http://localhost:8080/getUsers').then(function(response){
+          vm.usersData = response.data;
+      });
+
+    }
 
     vm.moreInfo = function(ev, id){
       $mdDialog.show({
@@ -47,14 +55,28 @@ angular.module('projectIdAppApp')
         .ok('Eliminar')
         .cancel('Cancelar');
       $mdDialog.show(confirm).then(function() {
-        /*confirm*/
-        console.log(vm.userId);
-        console.log("usuario borrado");
+
+        $http({
+          method: 'DELETE',
+          url: 'http://localhost:8080/deleteUser/' + vm.userId,
+          dataType: 'json',
+          headers : {
+            'Content-Type' : 'application/json'
+          }
+        }).then(function successCallback(response) {
+
+          console.log("El usuario : " +response.data.name + ' ' + response.data.surname +' ha sido borrado');
+
+        }, function errorCallback(response) {
+          console.log("El usuario : " +response.data.name + ' ' + response.data.surname +' no ha sido borrado');
+        });
 
       }, function() {
           console.log("no se ha podido borrar el usuario");
       });
     };
+
+    vm.getAllUser();
 
   });
 

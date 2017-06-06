@@ -4,6 +4,7 @@ import com.projectid.User;
 import com.projectid.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,4 +47,13 @@ public class UsersController {
 	public ResponseEntity<User> getUser (@PathVariable Long userId){
 		return new ResponseEntity<User>(userRepository.findOne(userId), HttpStatus.OK);
 	}
+
+	/*@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	public void updateUser (@Param("id") Long id, @Param("name") String name, @Param("surname") String surname,
+							@Param("address") String address, @Param("country") String country, @Param("phone") String phone,
+							@Param("mobile") String mobile, @Param("email") String email){
+
+
+	}*/
+
 }
