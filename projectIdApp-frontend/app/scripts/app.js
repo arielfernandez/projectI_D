@@ -16,12 +16,22 @@ angular
 
     $logProvider.debugEnabled(true);
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'home'
+      })
+      .when('/newUser', {
+        templateUrl: 'views/newUser.html',
+        controller: 'NewUserCtrl',
+        controllerAs: 'newUser'
+      })
+      .when('/allUsers', {
+        templateUrl: 'views/allUsers.html',
+        controller: 'AllUsersCtrl',
+        controllerAs: 'allUsers'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
   });

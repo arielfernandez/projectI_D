@@ -1,0 +1,27 @@
+<md-dialog class="" style="min-width: 500px;min-height: 500px;">
+  <md-toolbar>
+    <div class="md-toolbar-tools md-primary">
+      <h2>Informacion del usuario</h2>
+    </div>
+  </md-toolbar>
+
+  <md-content layout="column" class="col-lg-12" style="height:100%;padding-top: 15px;">
+
+    <md-input-container ng-repeat="(key, value) in usersData.data" style="margin-bottom: 0px;">
+      <label class="md-body-1">{{key}}</label>
+      <input name="{{value}}" ng-model="usersData.data[key]">
+    </md-input-container>
+
+  </md-content>
+
+  <md-dialog-actions layout="row">
+    <md-button ng-click="cancel()" class="md-raised md-primary">
+      Cerrar
+    </md-button>
+    <md-button ng-click="confirm()" class="md-raised md-primary">
+      Confirmar
+    </md-button>
+  </md-dialog-actions>
+
+
+</md-dialog>

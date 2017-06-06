@@ -1,0 +1,14 @@
+<div class="col-lg-12 col-md-12">
+
+  <md-content layout="row">
+    <md-card ng-repeat="card in home.cardData">
+      <img ng-src="{{card.image}}" class="md-card-image">
+      <md-card-title  style="color: #FFFFFF; background-color: #000000;">
+        <md-card-title-text ng-click="home.changeView(card.view)">
+          <span class="md-headline">{{card.title}}</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </md-content>
+
+</div>

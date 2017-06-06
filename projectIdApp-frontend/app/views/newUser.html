@@ -1,0 +1,57 @@
+<div >
+  <md-content layout-xs="column" layout="row" class="common-background">
+
+      <md-card class="registration-card">
+        <md-card-title class="registration-card-title md-primary">
+          <md-card-title-text layoyt="row">
+            <h2 class="md-headline title-card">Registro de personas</h2>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <form name="userForm" layout="column">
+
+            <!--<div flex="100" class="image-block">
+               <div class="abm-dialog-photo circle" id="abm-dialog-photo" style="background-image: url('{{newUser.image}}')"></div>
+               <md-button ng-click="newUser.selectFile()" class="photo-user md-raised md-primary circle">
+                 <i class="material-icons middle-icon" style="color: #FFFFFF;">file_upload</i>
+                 <md-tooltip md-direction="right">Subir foto</md-tooltip>
+               </md-button>
+               <p ng-show="imgSize" class="img-max-size">El tamaño de la imagen supera los {{newUser.IMAGE_MAX_SIZE}} MB. Debe seleccionar otra imagen.</p>
+               <input onchange="angular.element(this).scope().newUser.prepareFile()" accept="image/*" id="user-file-upload" type="file" style="display:none;">
+             </div>-->
+            <md-input-container>
+              <label class="md-body-1">Nombre</label>
+              <input ng-model="newUser.user.name" type="text" required>
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">Apellido</label>
+              <input ng-model="newUser.user.surname" type="text" required>
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">Dirección</label>
+              <input ng-model="newUser.user.address" type="text">
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">País</label>
+              <input ng-model="newUser.user.country" type="text">
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">Teléfono</label>
+              <input ng-model="newUser.user.phone" type="text">
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">Celular</label>
+              <input ng-model="newUser.user.mobile" type="text">
+            </md-input-container>
+            <md-input-container>
+              <label class="md-body-1">Email</label>
+              <input ng-model="newUser.user.email" type="email">
+            </md-input-container>
+          </form>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised md-primary" ng-disabled="!userForm.$valid" ng-click="newUser.createUser()">Agregar usuario</md-button>
+        </md-card-actions>
+      </md-card>
+  </md-content>
+</div>
