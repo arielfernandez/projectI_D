@@ -1,12 +1,9 @@
 # project-id-app
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.2.5.
+## Run frontend
 
-## Build & development
+Run `gulp build` for building and `gulp serve` for preview.
 
-Run `grunt` for building and `grunt serve` for preview.
+## Run backend
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+Run `mvn spring-boot:run`
