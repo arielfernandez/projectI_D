@@ -15,7 +15,8 @@ angular.module('projectIdAppApp')
       'country': 'País',
       'phone': 'Teléfono',
       'mobile':'Celular',
-      'email': 'Email'
+      'email': 'Email',
+      'dni': 'DNI'
     };
 
     $scope.getUserData = function (userId) {

@@ -4,7 +4,6 @@ import com.projectid.User;
 import com.projectid.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +35,26 @@ public class UsersController {
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
+	public ResponseEntity<User> updateUser(@RequestBody User user){
+
+		User oldUser = userRepository.findOne(user.getId());
+
+		oldUser.setName(user.getName());
+		oldUser.setSurname(user.getSurname());
+		oldUser.setDni(user.getDni());
+		oldUser.setAddress(user.getAddress());
+		oldUser.setCountry(user.getCountry());
+		oldUser.setMobile(user.getMobile());
+		oldUser.setPhone(user.getPhone());
+		oldUser.setEmail(user.getEmail());
+
+		userRepository.saveAndFlush(oldUser);
+
+		return new ResponseEntity<User>(oldUser, HttpStatus.OK);
+	}
+
+
 	@RequestMapping(value = "/deleteUser/{userId}", method = RequestMethod.DELETE)
 	public ResponseEntity<User> deleteUser(@PathVariable Long userId){
 		User user = userRepository.findOne(userId);
@@ -47,13 +66,4 @@ public class UsersController {
 	public ResponseEntity<User> getUser (@PathVariable Long userId){
 		return new ResponseEntity<User>(userRepository.findOne(userId), HttpStatus.OK);
 	}
-
-	/*@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-	public void updateUser (@Param("id") Long id, @Param("name") String name, @Param("surname") String surname,
-							@Param("address") String address, @Param("country") String country, @Param("phone") String phone,
-							@Param("mobile") String mobile, @Param("email") String email){
-
-
-	}*/
-
 }

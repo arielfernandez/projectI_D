@@ -7,9 +7,9 @@
 
   <md-content layout="column" class="col-lg-12" style="height:100%;padding-top: 15px;">
 
-    <md-input-container ng-repeat="(key, value) in usersData" style="margin-bottom: 0px;">
-      <label class="md-body-1">{{key}}</label>
-      <input name="{{value}}" ng-model="usersData[key]">
+    <md-input-container ng-repeat="(key, value) in userData" style="margin-bottom: 0px;">
+      <label class="md-body-1">{{labels[key]}}</label>
+      <input name="{{value}}" ng-model="userData[key]">
     </md-input-container>
 
   </md-content>

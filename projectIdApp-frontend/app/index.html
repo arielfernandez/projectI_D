@@ -30,11 +30,20 @@
             <img class="header-img" src="images/spring_header.png"/>
             <a class="navbar-brand md-display-2" href="#/">SpringZone</a>
           </div>
+          <div style="float: right; color: white; display: inline-flex">
+            <h2 class="md-body-2">ADMIN</h2><md-button class="md-icon-button" style="margin-top: 11px;"><i class="material-icons middle-icon" style="color:white;">clear</i></md-button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div ng-view=""></div>
+    <div class="container" ng-view=""></div>
+
+    <!--<div class="footer" style="background-color: black;color: white;min-height: 70px;">
+      <div class="container">
+        <h5 class="md-body-2" style="float: right">Ariel Fernandez</h5>
+      </div>
+    </div>-->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -73,6 +82,7 @@
     <script src="scripts/controllers/moreInfoDialog.js"></script>
     <script src="scripts/controllers/editUserDialog.js" ></script>
     <script src="factories/appDataFactory.js"></script>
+    <script src="factories/genericMethodFactory.js"></script>
     <!-- endbuild -->
 </body>
 </html>

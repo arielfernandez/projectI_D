@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('projectIdAppApp')
-  .controller('NewUserCtrl', function ($http, $scope) {
+  .controller('NewUserCtrl', function ($http, $scope, genericMethodFactory, $route) {
 
     var vm = this;
     vm.IMAGE_MAX_SIZE = 2;
@@ -60,12 +60,20 @@ angular.module('projectIdAppApp')
           'Content-Type' : 'application/json'
         }
       }).then(function successCallback(response) {
-        console.log(response);
+          console.log(response);
+          genericMethodFactory.toast("El usuario " + response.data.name + " " + response.data.surname + " se ha creado correctamente");
+          vm.reload();
         }, function errorCallback(response) {
           console.log(response);
+          genericMethodFactory.toast("El usuario no se ha podido crear");
+
       });
 
     };
+
+    vm.reload = function() {
+      $route.reload();
+    }
 
 
   });

@@ -5,9 +5,9 @@
 'use strict';
 
 angular.module('projectIdAppApp')
-  .controller('EditUserDialogCtrl', function ($scope, $mdDialog,  $rootScope, dialogData, $http) {
+  .controller('EditUserDialogCtrl', function ($scope, $mdDialog,  $rootScope, dialogData, $http, genericMethodFactory) {
 
-    $scope.usersData = {};
+    $scope.userData = {};
 
     $scope.labels = {
       'name': 'Nombre',
@@ -16,14 +16,15 @@ angular.module('projectIdAppApp')
       'country': 'País',
       'phone': 'Teléfono',
       'mobile':'Celular',
-      'email': 'Email'
+      'email': 'Email',
+      'dni': 'DNI'
     };
 
     $scope.getUserData = function (userId) {
       $http.get('http://localhost:8080/getUser/' + userId).then(function (response) {
         for(var key in response.data){
           if(key != 'id')
-            $scope.usersData[$scope.labels[key]] = response.data[key];
+            $scope.userData[key] = response.data[key];
           else
             $scope.userId = response.data[key];
         }
@@ -36,13 +37,35 @@ angular.module('projectIdAppApp')
 
     $scope.updateUser = function () {
 
-      $scope.usersData.id = $scope.userId;
+      $scope.userData.id = $scope.userId;
       $scope.cancel();
+
+      $http({
+        method: 'POST',
+        url: 'http://localhost:8080/editUser',
+        dataType: 'json',
+        data: $scope.userData,
+        headers : {
+          'Content-Type' : 'application/json'
+        }
+      }).then(function successCallback(response) {
+
+        genericMethodFactory.toast("El usuario " + response.data.name + " " + response.data.surname + " se ha editado correctamente");
+        $scope.reload();
+
+      }, function errorCallback(response) {
+
+        genericMethodFactory.toast("El usuario no se ha podido editar");
+
+      });
 
     }
 
+    $scope.reload = function() {
+      $route.reload();
+    }
+
     if(dialogData.id){
-      console.log(dialogData.id);
       $scope.getUserData(dialogData.id);
     }
 

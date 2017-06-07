@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('projectIdAppApp')
-  .controller('AllUsersCtrl', function ($mdDialog, appDataFactory, $http) {
+  .controller('AllUsersCtrl', function ($mdDialog, appDataFactory, $http, genericMethodFactory) {
 
     var vm = this;
 
@@ -64,15 +64,13 @@ angular.module('projectIdAppApp')
             'Content-Type' : 'application/json'
           }
         }).then(function successCallback(response) {
-
-          console.log("El usuario : " +response.data.name + ' ' + response.data.surname +' ha sido borrado');
+          genericMethodFactory.toast('El usuario : ' +response.data.name + ' ' + response.data.surname +' ha sido borrado')
+          vm.getAllUser();
 
         }, function errorCallback(response) {
-          console.log("El usuario : " +response.data.name + ' ' + response.data.surname +' no ha sido borrado');
+          genericMethodFactory.toast('El usuario : ' +response.data.name + ' ' + response.data.surname +' no ha sido borrado')
         });
 
-      }, function() {
-          console.log("no se ha podido borrar el usuario");
       });
     };
 

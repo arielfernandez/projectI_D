@@ -192,6 +192,15 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input{
   border-color: #000000;
 }
 
+.new-user-input{
+  display: inline-flex;
+}
+
+.new-user-input md-input-container{
+  min-width: 45%;
+  margin-right: 50px;
+}
+
 
 
 

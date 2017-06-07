@@ -14,13 +14,13 @@ public class User {
     private Long id;
     private String name;
     private String surname;
+    private String dni;
     private String address;
     private String country;
     private String phone;
     private String mobile;
     private String email;
     //private byte[] image;
-
 
     public Long getId() {
         return id;
@@ -46,6 +46,14 @@ public class User {
         this.surname = surname;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -62,7 +70,9 @@ public class User {
         this.country = country;
     }
 
-    public String getPhone() { return phone; }
+    public String getPhone() {
+        return phone;
+    }
 
     public void setPhone(String phone) {
         this.phone = phone;
@@ -83,6 +93,8 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 
     /*public byte[] getImage() {
         return image;
