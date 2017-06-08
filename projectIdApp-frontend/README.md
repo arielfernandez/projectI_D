@@ -2,8 +2,16 @@
 
 ## Run frontend
 
-Run `gulp build` for building and `gulp serve` for preview.
+Una vez clanado el repositorio
+
+Instalar bower y npm en sus computadoras
+
+Corre `bower install` y `npm install` desde la carpeta projectId-frontend
+
+Copiar bower_components que se encuentra dentro de la carpeta projectId-frontend/app en la carpeta projectId-frontend
+
+Corre `gulp serve` para previsualizar al app.
 
 ## Run backend
 
-Run `mvn spring-boot:run`
+Corre `mvn spring-boot:run`
