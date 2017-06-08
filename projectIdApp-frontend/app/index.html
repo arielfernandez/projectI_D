@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>SpringZone</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -28,7 +29,7 @@
         <div class="container" style="height: 64px;">
           <div class="navbar-header">
             <img class="header-img" src="images/spring_header.png"/>
-            <a class="navbar-brand md-display-2" href="#/">SpringZone</a>
+            <a class="navbar-brand md-display-2" style="font-style: italic;">SpringZone</a>
           </div>
           <div style="float: right; color: white; display: inline-flex">
             <h2 class="md-body-2">ADMIN</h2><md-button class="md-icon-button" style="margin-top: 11px;"><i class="material-icons middle-icon" style="color:white;">clear</i></md-button>
@@ -37,8 +38,11 @@
       </div>
     </div>
 
-    <div class="container" ng-view=""></div>
-
+    <div class="container" ng-view="" style="min-height: 60%"></div>
+    <div class="" style="float: right;margin-top: 5%;">
+      <h4 class="md-body-2" style="margin: 0; padding: 0; font-weight: bold; font-style: oblique;">Powered By</h4>
+      <img src="images/spring-background.png" style="max-width: 100px;margin-right: 20px">
+    </div>
     <!--<div class="footer" style="background-color: black;color: white;min-height: 70px;">
       <div class="container">
         <h5 class="md-body-2" style="float: right">Ariel Fernandez</h5>
@@ -47,7 +51,7 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -55,7 +59,7 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+      </script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -84,5 +88,5 @@
     <script src="factories/appDataFactory.js"></script>
     <script src="factories/genericMethodFactory.js"></script>
     <!-- endbuild -->
-</body>
+  </body>
 </html>
